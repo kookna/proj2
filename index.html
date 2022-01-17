@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<!-- meta -->
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<meta name="description" itemprop="description" content="Soft SangSang" />
+
+	<title> - 시안</title>
+	<!-- script -->
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script type="text/javascript" src="jquery-ui.min.js"></script>
+	<script type="text/javascript" src="jquery.dotdotdot.min.js"></script>
+	<script type="text/javascript" src="jquery.matchHeight-min.js"></script>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+	<!-- css -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />	
+	<link rel="stylesheet" type="text/css" href="fonts.css" />
+	<link rel="stylesheet" type="text/css" href="reset.css" />
+</head>
+<style>
+	#wrap{width:100%; height:100%; margin:0 auto;}
+	.fx{display: flex; display: -ms-flex; display: -webkit-flex;}
+	.grid{max-width:1600px; width:100%; margin:0 auto;}
+	/* ******* */
+	.t_type1 {text-align: center;}
+	.t_type1 h3{font-size:30px; font-weight: 700; margin-bottom:15px;}
+	.t_type1 p{font-size:18px; font-weight: 500; line-height: 1.4;}
+
+	.t_type2 h3{font-size:24px; font-weight: 700; margin-bottom:15px;}
+	.t_type2 p{font-size:14px; font-weight: 500; line-height: 1.4;}
+
+	header{position: fixed; content:''; left:50%; top:0; transform: translate(-50%,0); width:100%; height: 80px; background:#fff; z-index: 99999;}	
+	header .container{width:100%; height:100%; align-items: center; justify-content: space-between; padding:0 20px;}
+	header .container .menu{height:100%;}
+	header .container .menu > li span{display: flex; padding: 0 20px; height:100%; align-items: center; font-size:16px; font-weight: 400;}
+	header .container .button_map{width:30px; height:30px; position: relative; background:#222; cursor: pointer;}
+	header .container .button_map span{position: absolute; content:''; left:50%; top:50%; transform: translate(-50%,-50%); width:70%; height:2px; background:#fff;}
+	header .container .button_map span:nth-child(1){top:7px;  transform: translate(-50%, 0);}
+	header .container .button_map span:nth-child(2){top:50%;  transform: translate(-50%,-50%);}
+	header .container .button_map span:nth-child(3){top:calc(100% - 7px);  transform: translate(-50%,-100%);}
+
+	.inner{width:100%; height:100%; margin-top:80px; position: relative;}
+	.section1{width:100%;}
+	.section1 .container{width:100%; height:calc(100vh - 160px)}
+	.section1 .sec__1{width:100%; height:100%;}
+	.section1 .sec__1 .item{align-items: center; padding: 0 150px; position: relative;}
+	.section1 .sec__1 .item::before{position: absolute; content:''; left:50%; top:50%; transform: translate(-50%,-50%); width:100%; height:100%; background:#000; opacity: .3; z-index: 0;}
+	.section1 .sec__1 .item .text_box{max-width:500px; position: relative; z-index: 1;}
+	.section1 .sec__1 .item h2{font-size:40px; margin-bottom:20px; font-weight: 700; color:#fff;}
+	.section1 .sec__1 .item p{font-size:16px; color:#fff; line-height: 1.4; font-weight: 500; }
+	.section1 .sec__1 .sec__1__pagination{width:30px; left:150px; bottom:20%;}
+	.section1 .sec__1 .sec__1__pagination span{width:100%; border-radius: 0; margin:0; background:#fff;}
+	.section1 .swiper-button-prev:after, .section1 .swiper-rtl .swiper-button-next:after,
+	.section1 .swiper-button-next:after, .section1 .swiper-rtl .swiper-button-prev:after{font-size:24px; color:#fff;}
+	.section1 .sec__1 .item1{background:url(./images/bg1.png) 50%;}
+	/* .section1 .sec__1 .item1{background:#a1f;} */
+	.section1 .sec__1 .item2{background:url(./images/bg2.jpg) no-repeat center / cover;}
+	.section1 .sec__1 .item3{background:url(./images/bg3.jpg) no-repeat center / cover;}
+
+	
+	.section2{padding:120px 0;}
+	.section2 .t_type1{margin-bottom:40px;}
+	.section2 .content .img_box{width:50%; background:url(./images/bg2.jpg)no-repeat center / cover;}
+	.section2 .content .text_box{width:50%; padding:60px; background:#333; color:#fff; flex-direction:column;}
+	.section2 .content .text_box h3{font-size:26px; font-weight: 700; margin-bottom:20px;}
+	.section2 .content .text_box p{font-size:16px; font-weight: 500; color:#fff; line-height: 1.4; opacity: .6;}
+
+	.section3{padding:120px 0; background:#fafafa;}	
+	.section3 .content_left{width:50%; padding:40px; background:url(./images/sec3_img1.jpg)no-repeat center / cover;}
+	.section3 .content_right{width:50%; flex-direction: column; color:#fff;}
+	.section3 .content_right .item_group{width:100%;}
+	.section3 .content_right .item{width: 50%; padding:40px;  background: url(./images/sec3_img2.jpg)no-repeat center / cover; opacity: 0.8; position: relative;}
+	.section3 .content_right .item::before{position: absolute; content:''; left:50%; top:50%; transform: translate(-50%,-50%); width:100%; height:100%; background:#000; opacity: .8; z-index: 1;}
+	.section3 .content_right .t_type2 p{opacity: .6; z-index: 1; position: relative; z-index: 1;}
+	.section3 .content_right .item2{width:50%; height: 300px; padding:40px; background: url(./images/sec3_img3.jpg)no-repeat center / cover;}
+	.section3 .content_right .item3{width:50%; height: 300px; padding:40px; background: url(./images/sec3_img4.jpg)no-repeat center / cover;}
+	.section3 .content_right .item4{width:50%; height: 300px; padding:40px; background: url(./images/sec3_img5.jpg)no-repeat center / cover;}
+
+	.section4 img{width:100%;}
+
+	.section5{padding:120px 0;}
+	.section5 .container{height:500px;}
+	.section5 .container .t_type1{margin-bottom:60px;}
+	.section5 .container .sec__2{width:100%; }
+	.section5 .container .sec__2 .item{ flex-direction: column; justify-content: space-between; cursor: pointer;}
+	.section5 .container .sec__2 .item .img_box{width:100%; height:350px; position: relative; overflow: hidden;}
+	.section5 .container .sec__2 .item .img_box img{position: absolute; content:''; left:50%; top:50%; transform: translate(-50%,-50%) scale(120%);}
+	.section5 .container .sec__2 .item .text_box{width:100%; padding:20px;}
+	.section5 .container .sec__2 .item .text_box h4{font-size:18px; font-weight: 700; max-width:100%; overflow: hidden; white-space:nowrap; text-overflow: ellipsis; margin-bottom:10px;}
+	.section5 .container .sec__2 .item .text_box p{max-width:100%; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size:14px; font-weight: 500; line-height: 1.4;}
+
+	footer{width:100%; height:100%; padding:80px 0; background:#222;}
+	footer .container{flex-direction: column; align-items: center;}
+	footer .logo{-webkit-filter: grayscale(100%); filter: gray; margin-bottom:20px;}
+	footer ul{justify-content: center; margin-bottom:20px;}
+	footer ul li{margin:0 20px; color:#fff; opacity: .3;}
+	footer .info{color:#fff; font-size:16px; margin-bottom:10px; opacity: .5;}
+	footer .copy{font-size:12px; color:#fff; opacity: .3; margin-top: 10px;}
+</style>
+<body>
+	<div id="wrap">
+		<header>
+			<div class="container grid fx">
+				<div class="logo"><img src="./images/logo.png"></div>
+				<!-- <div class="logo"><img src="https://via.placeholder.com/183x40.png/09f/fff"></div> -->
+				<ul class="menu fx">
+					<li><span>BENPRAYER</span></li>
+					<li><span>SHOP</span></li>
+					<li><span>Cork Headgear</span></li>
+					<li><span>CLEARANCE</span></li>
+					<!-- <li><span>1차메뉴</span></li> -->
+				</ul>
+				<div class="button_map">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</header>
+		<div class="inner">
+			<section class="section1 grid">
+				<div class="container">
+					<div class="swiper sec__1">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide item item1 fx">
+								<div class="text_box">
+									<h2>BENPRAYER</h2>
+									<p>벤프레이어 헤드기어는 머리를 보호하는 Protective Equipment 분류에 해당하는 생활형보호구 입니다.
+										폴리에스티렌 폼을 대체하는 친환경 소재인 코르크를 사용하여 반영구적인 라이너를 개발함으로써 헬멧의 사용기간을 늘리고 제품 폐기시 발생하는 부자재들을 친환경적으로 만든 제품입니다.
+									</p>
+								</div>
+							</div>
+							<div class="swiper-slide item item2 fx">
+								<div class="text_box">
+									<h2>3M Reflective Sheeting</h2>
+									<p>야간활동 시 사고방지를 위한 3M Reflective 원단을 커버챙 부분에 적용했습니다.
+										디자인 뿐만 아니라 기능에 충실한 제품을 만들기 위해 노력하고 있습니다.</p>
+								</div>
+							</div>
+							<div class="swiper-slide item item3 fx">
+								<div class="text_box">
+									<h2>친환경 헬멧</h2>
+									<p>25km/h 주행시 뾰족한 물체와 충격에 대한 보호와 친환경 코르크 사용으로 환경과 안전까지 생각했습니다</p>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-button-next sec__1__next"></div>
+						<div class="swiper-button-prev sec__1__prev"></div>
+						<div class="swiper-pagination sec__1__pagination"></div>
+					</div>
+					<script>
+						var swiper = new Swiper(".sec__1", {
+							loop: true,
+							// spaceBetween: 30,
+							slidesPerView: 1,
+							speed: 800,
+							autoplay: {
+								delay: 4500,
+								disableOnInteraction: false,
+							},
+							pagination: {
+								el: ".sec__1__pagination",
+								clickable: true,
+							},
+							navigation: {
+								nextEl: ".sec__1__next",
+								prevEl: ".sec__1__prev",
+							}
+						});
+					</script>
+				</div>
+			</section>
+
+			<section class="section2 grid">
+				<div class="container">
+					<div class="t_type1">
+						<h3>벤프레이어 특징</h3>
+						<p>환경을 생각합니다</p>
+					</div>
+					<div class="content fx">
+						<div class="img_box"></div>
+						<div class="text_box fx">
+							<h3>Corkheadgear Cover </h3>
+							<p>벤프레이어 코르크 헤드기어는 크게 2가지로 구성되어 있습니다.
+								충격 흡수 기능을 가진 Hard Shell과 다양한 스타일을 위한 Headgear Cover로 구성되어 있습니다.
+								계절과 활동영역에 적합한 원단을 사용하여 다양한 커버 디자인이 업데이트 될 예정입니다.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			<section class="section3">
+				<div class="container grid fx">
+					<div class="content_left">
+						<div class="t_type2">
+							<h3>Instagram</h3>
+							<!-- <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p> -->
+						</div>
+					</div>
+					<div class="content_right fx">
+						<div class="item_group fx">
+							<div class="item">
+								<div class="t_type2">
+									<h3>khojj </h3>
+									<p>맘에 드는 헬멧도 샀으니
+										#벤프레이어 #코르크헤드기어
+										#benprayer #bp #자전거 #라이딩 #헬멧
+										#배두나헬멧</p>
+								</div>
+							</div>
+							<div class="item2">
+								<div class="t_type2">
+									<h3>shohokuu</h3>
+									<p>너무 귀욥자나 ! 자전거 헬멧이가 쓸데없이 갖고 싶게 예쁜건 뭐죵⛑
+										#벤프레이어 #benprayer #자전거헬멧 #미니벨로 #롱보드 #코르크헤드기어</p>
+								</div>
+							</div>
+						</div>
+						<div class="item_group fx">
+							<div class="item3">
+								<div class="t_type2">
+									<h3>narby___</h3>
+									<p>#롱보드 탈때는 언제나 벤프레이어와 함께..♥</p>
+								</div>
+							</div>
+							<div class="item4">
+								<div class="t_type2">
+									<h3>dear____mori</h3>
+									<p>벤프레이어 헬멧❣
+										주문했는데, 주문한 커버 색상이 불량 밖에 없다고
+										죄송하다며 커버 하나 더 챙겨주시겠다고 직접 전화까지🙊
+										포장 박스가 너무 예뻐서 놀라고, 착용감에 놀라고, 색상에 놀라고🙈
+										헬멧 쓰기 싫다고 징징거릴 일은 없겠다😘</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section4">
+				<div class="t_type1">
+					<img src="./images/banner1.jpg" alt="">
+				</div>
+			</section>
+
+			<section class="section5">
+				<div class="container grid">
+					<div class="t_type1">
+						<h3>SHOP</h3>
+						<!-- <p>as </p> -->
+					</div>
+					<div class="swiper sec__2">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide item fx">
+								<div class="img_box"><img src="./images/sec5_img1.jpg"></div>
+								<div class="text_box">
+									<h4>Penguin Needlework Cover</h4>
+									<p>벤프레이어 대표 헤드기어인 펭귄커버입니다 머리를 보호하는 Protective Equipment 분류에 해당하는 생활형보호구 입니다...</p>
+								</div>
+							</div>
+							<div class="swiper-slide item fx">
+								<div class="img_box"><img src="./images/sec5_img0.jpg"></div>
+								<div class="text_box">
+									<h4>Mint Cover</h4>
+									<p>밝은 민트색으로 시원한 봄 여름 가을에 사용하기 좋은 커버입니다 챙에 3M 리플렉터가 들어가 있어서 야간주행시 자동차 등의 라이트 빛 반사 합니다</p>
+								</div>
+							</div>
+							<div class="swiper-slide item fx">
+								<div class="img_box"><img src="./images/sec5_img2.jpg"></div>
+								<div class="text_box">
+									<h4>Navy Yellow Winter Trapper Cover</h4>
+									<p>보온에 탁월한 원단을 채택하여 제작된 겨울 안성맞춤 트랍페 커버입니다 귀가 추운 겨울에 사용해보세요</p>
+								</div>
+							</div>
+							<div class="swiper-slide item fx">
+								<div class="img_box"><img src="./images/sec5_img3.jpg"></div>
+								<div class="text_box">
+									<h4>Khaki Green Waterproof Cover</h4>
+									<p>우중 라이딩에도 사용가능한 워터프루프 모델입니다. 커버원단에 방수기능이 있습니다</p>
+								</div>
+							</div>
+							<div class="swiper-slide item fx">
+								<div class="img_box"><img src="./images/sec5_img5.jpg"></div>
+								<div class="text_box">
+									<h4>Navy Tyvek Riding Cap</h4>
+									<p>타이벡 라이딩 캡은 구부러지는 모자챙을 적용하여 포켓이나 가방에 편하게 휴대할 수 있고 유연한 타이벡 소재로 모자 위에 헬멧을 써도 답답함이나 거슬림이 없는 제품입니다. 3M 반사 원단으로 야간 활동 시 안전을 더한 기능성 패션 아이템입니다.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<script>
+						var swiper2 = new Swiper(".sec__2", {
+							loop: true,
+							spaceBetween: 30,
+							slidesPerView: 4,
+							autoplay: {
+								delay: 4500,
+								disableOnInteraction: false,
+							},
+
+						});
+					</script>
+				</div>
+			</section>
+
+			<footer>
+				<div class="container grid fx">
+					<div class="logo"><img src="./images/logo.png"></div>
+					<ul class="fx">
+						<li>about</li>
+						<li>Contact</li>
+						<li>FAQ</li>
+						<li>My account</li>
+						<li>Order Tracking</li>
+					</ul>
+					<p class="info">인천시 부평구 대정로 19 (부평4동 374-4) 이레타워 1층 오크빌딩 (신스)</p>
+					<a href="032-502-2758">전화하기</a>
+					<p class="copy">BENPRAYER © Company</p>
+					
+				</div>
+			</footer>
+		</div>
+	</div>
+
+</body>
+<script>
+	AOS.init();
+</script>
+
+</html>
